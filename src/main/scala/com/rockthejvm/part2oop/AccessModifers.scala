@@ -23,7 +23,7 @@ object AccessModifers {
     val dad = new Person(dadName)
 
     // can't call a protected method on ANOTHER instance of Person
-    
+
     //    def everyoneSayHi(): String =
     //      this.sayHi() + s"Hi, I'm $name, and here are my parents: " + mom.sayHi() + dad.sayHi()
   }
