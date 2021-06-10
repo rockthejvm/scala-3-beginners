@@ -55,7 +55,7 @@ object AbstractDataTypes {
       AnyVal
         Int, Boolean, Char, ...
 
-        
+
           scala.Nothing
    */
 
