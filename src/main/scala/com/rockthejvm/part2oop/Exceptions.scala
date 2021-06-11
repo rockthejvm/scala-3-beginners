@@ -8,7 +8,9 @@ object Exceptions {
   // 1 - throw exceptions
   // val aWeirdValue: Int = throw new NullPointerException // returns Nothing
 
-  // type Throwable
+  // Exception hieararchy:
+  //
+  // Throwable:
   //    Error, e.g. SOError, OOMError
   //    Exception, e.g. NPException, NSEException, ....
 
@@ -16,6 +18,7 @@ object Exceptions {
     if (withExceptions) throw new RuntimeException("No int for you!")
     else 42
 
+  // 2 - catch exceptions
   val potentialFail = try {
     // code that might fail
     getInt(true) // an Int
@@ -30,7 +33,7 @@ object Exceptions {
     // Unit here
   }
 
-  // custom exceptions
+  // 3 - custom exceptions
   class MyException extends RuntimeException {
     // fields or methods
     override def getMessage = "MY EXCEPTION"
