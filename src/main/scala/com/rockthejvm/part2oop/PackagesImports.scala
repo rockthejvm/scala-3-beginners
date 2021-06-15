@@ -1,7 +1,5 @@
 package com.rockthejvm.part2oop
 
-import com.rockthejvm.practice.Predicate
-
 import scala.collection.SortedSet
 
 // can define values and methods top-level
@@ -26,7 +24,7 @@ object PackagesImports { // top-level definition
 
   // import everything
   import com.rockthejvm.practice.*
-  val aPredicate: Predicate[Int] = ???
+  val aPredicate: Cons[Int] = ???
 
   // import multiple symbols
   import PhysicsConstants.{SPEED_OF_LIGHT, EARTH_GRAVITY}
