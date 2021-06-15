@@ -149,12 +149,18 @@ object LListTest {
 
     // map testing
     val numbersDoubled = first3Numbers.map(doubler)
+    val numbersDoubled_v2 = first3Numbers.map(x => x * 2)
+    val numbersDoubled_v3 = first3Numbers.map(_ * 2)
     println(numbersDoubled)
+
     val numbersNested = first3Numbers.map(doublerList)
+    val numbersNested_v2 = first3Numbers.map(value => Cons(value, Cons(value + 1, Empty())))
     println(numbersNested)
 
     // filter testing
     val onlyEvenNumbers = first3Numbers.filter(evenPredicate) // [2]
+    val onlyEvenNumbers_v2 = first3Numbers.filter(elem => elem % 2 == 0)
+    val onlyEvenNumbers_v3 = first3Numbers.filter(_ % 2 == 0)
     println(onlyEvenNumbers)
 
     // test concatenation
@@ -163,10 +169,11 @@ object LListTest {
 
     // test flatMap
     val flattenedList = first3Numbers.flatMap(doublerList)
+    val flattenedList_v2 = first3Numbers.flatMap(value => Cons(value, Cons(value + 1, Empty())))
     println(flattenedList)
 
     // find test
-    println(LList.find[Int](first3Numbers, evenPredicate)) // 2
+    println(LList.find[Int](first3Numbers, _ % 2 == 0)) // 2
   }
 }
 
