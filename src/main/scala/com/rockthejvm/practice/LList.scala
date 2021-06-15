@@ -3,7 +3,7 @@ package com.rockthejvm.practice
 import scala.annotation.tailrec
 
 // singly linked list
-// [1,2,3] = [1] -> [2] -> [3] -> |
+// [1,2,3] = [1] -> [2] -> [3] -> []
 abstract class LList[A] {
   def head: A
   def tail: LList[A]
@@ -109,29 +109,6 @@ case class Cons[A](override val head: A, override val tail: LList[A]) extends LL
         [1,2,3].flatMap(n => [n, n+1]) => [1,2, 2,3, 3,4]
  */
 
-// (replaced with function types)
-//trait Predicate[T] {
-//  def test(element: T): Boolean // T => Boolean
-//}
-//
-//class EvenPredicate extends Predicate[Int] {
-//  override def test(element: Int) =
-//    element % 2 == 0
-//}
-//
-//trait Transformer[A, B] {
-//  def transform(value: A): B // A => B
-//}
-//
-//class Doubler extends Transformer[Int, Int] {
-//  override def transform(value: Int) = value * 2
-//}
-//
-//class DoublerList extends Transformer[Int, LList[Int]] {
-//  override def transform(value: Int) =
-//    Cons(value, Cons(value + 1, Empty()))
-//}
-
 object LList {
   def find[A](list: LList[A], predicate: A => Boolean): A = {
     if (list.isEmpty) throw new NoSuchElementException
@@ -190,11 +167,34 @@ object LListTest {
 
     // find test
     println(LList.find[Int](first3Numbers, evenPredicate)) // 2
-    //    println(LList.find[Int](first3Numbers, new Predicate[Int] {
-    //      override def test(element: Int) = element > 5
-    //    })) // throws a NSEException
   }
 }
 
 
+//////////////////////////////////////////////////////////////////////////////////////
+// The code below is not used.
+// These traits were replaced with function types in the "What's a Function" lesson.
+// Left here for posterity.
+//////////////////////////////////////////////////////////////////////////////////////
 
+trait Predicate[T] { // conceptually equivalent with T => Boolean
+  def test(element: T): Boolean
+}
+
+class EvenPredicate extends Predicate[Int] {
+  override def test(element: Int) =
+    element % 2 == 0
+}
+
+trait Transformer[A, B] { // conceptually equivalent with A => B
+  def transform(value: A): B
+}
+
+class Doubler extends Transformer[Int, Int] {
+  override def transform(value: Int) = value * 2
+}
+
+class DoublerList extends Transformer[Int, LList[Int]] {
+  override def transform(value: Int) =
+    Cons(value, Cons(value + 1, Empty()))
+}
