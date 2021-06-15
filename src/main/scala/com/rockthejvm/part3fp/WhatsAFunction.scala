@@ -2,9 +2,10 @@ package com.rockthejvm.part3fp
 
 object WhatsAFunction {
 
-  // FP: functions are "first-class" citizens
-  // JVM
+  // FP: functions are "first-class" citizens, i.e. work with functions like any other values
+  // JVM was built for Java, an OO language: objects (instances of classes) are "first-class" citizens
 
+  // solution: traits with apply methods
   trait MyFunction[A, B] {
     def apply(arg: A): B
   }
@@ -16,23 +17,26 @@ object WhatsAFunction {
   val meaningOfLife = 42
   val meaningDoubled = doubler(meaningOfLife) // doubler.apply(meaningOfLife)
 
-  // function types
+  // built-in function types
+  // Function1[ArgType, ResultType]
   val doublerStandard = new Function1[Int, Int] {
     override def apply(arg: Int) = arg * 2
   }
   val meaningDoubled_v2 = doublerStandard(meaningOfLife)
 
+  // Function2[Arg1Type, Arg2Type, ResultType]
   val adder = new Function2[Int, Int, Int] {
     override def apply(a: Int, b: Int) = a + b
   }
   val anAddition = adder(2, 67)
 
-  // (Int, String, Double, Boolean) => Int ==== Function4[Int, String, Double, Boolean, Int]
+  // larger example
+  // (Int, String, Double, Boolean) => Int, aka Function4[Int, String, Double, Boolean, Int]
   val athreeArgFunction = new Function4[Int, String, Double, Boolean, Int] {
     override def apply(v1: Int, v2: String, v3: Double, v4: Boolean): Int = ???
   }
 
-  // all functions are instances of FunctionX with apply methods
+  // all function values in Scala are instances of FunctionN traits with apply methods
 
   /**
    * Exercises
@@ -47,8 +51,8 @@ object WhatsAFunction {
   }
 
   // 2
-  // yes: Predicate[T] equivalent with Function1[T, Boolean] === T => Boolean
-  // yes: Transformer[A, B] equivalent with Function1[A, B] === A => B
+  // yes: Predicate[T] equivalent with Function1[T, Boolean] aka T => Boolean
+  // yes: Transformer[A, B] equivalent with Function1[A, B] aka A => B
 
   // 3
   val superAdder = new Function1[Int, Function1[Int, Int]] {
@@ -62,6 +66,8 @@ object WhatsAFunction {
   // currying
   val anAddiotion_v3 = superAdder(2)(67)
 
+  // function values = instances of FunctionN
+  // methods = invokable members of classes (concept from OOP)
   // function values != methods
 
   def main(args: Array[String]): Unit = {
