@@ -1,4 +1,4 @@
-package com.rockthejvm.part4pm
+package com.rockthejvm.part4power
 
 import com.rockthejvm.practice.*
 
