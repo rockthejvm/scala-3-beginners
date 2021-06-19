@@ -98,6 +98,8 @@ object HandlingFailure {
     conn <- HttpService.getConnectionSafe(host, port)
     html <- conn.getSafe(myDesiredURL)
   } yield html
+  val finalResult_v2 = maybeHtml.fold(e => s"<html>${e.getMessage}</html>", s => s)
+
 
   def main(args: Array[String]): Unit = {
     println(finalResult)
