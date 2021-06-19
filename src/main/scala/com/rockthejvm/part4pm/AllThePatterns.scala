@@ -93,10 +93,11 @@ object AllThePatterns {
     case n if n % 2 == 0 => true
     case _ => false
   }
+  // anti-pattern: convoluted, hard to read
 
-  // heavy anti-pattern
+  // anti-pattern 2: if (condition) true else false
   val isEven_bad_v2 = if (aSimpleInt % 2 == 0) true else false
-  // better
+  // better - return the boolean expression, it has everything you need!
   val isEven = aSimpleInt % 2 == 0
 
   /**
@@ -115,6 +116,7 @@ object AllThePatterns {
         List[String] => List
         List[Int] => List
         Function1[Int, String] => Function1
+        etc.
    */
 
   def main(args: Array[String]): Unit = {
