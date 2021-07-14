@@ -1,6 +1,6 @@
 package com.rockthejvm.part2oop
 
-object AccessModifers {
+object AccessModifiers {
 
   class Person(val name: String) {
     // protected == access to inside the class + children classes
