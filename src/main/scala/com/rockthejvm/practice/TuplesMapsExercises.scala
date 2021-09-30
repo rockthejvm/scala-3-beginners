@@ -110,7 +110,7 @@ object TuplesMapsExercises {
       }
 
     if (!network.contains(a) || !network.contains(b)) false
-    else search(network(a), Set(a))
+    else search(Set(a), Set(a))
   }
 
   def main(args: Array[String]): Unit = {
@@ -132,6 +132,7 @@ object TuplesMapsExercises {
     println(nPeopleWithNoFriends(addPerson(simpleNet, "Daniel")))
 
     println(socialConnection(simpleNet, "Bob", "Jim")) // true
+    println(socialConnection(friend(network, "Bob", "Mary"), "Bob", "Mary")) // true
     println(socialConnection(addPerson(simpleNet, "Daniel"), "Bob", "Daniel")) // false
   }
 }
