@@ -24,8 +24,9 @@ object TuplesMapsExercises {
   def addPerson(network: Map[String, Set[String]], newPerson: String): Map[String, Set[String]] =
     network + (newPerson -> Set())
 
-  def removePerson(network: Map[String, Set[String]], person: String): Map[String, Set[String]] =
-    network - person
+  def removePerson(network: Map[String, Set[String]], person: String): Map[String, Set[String]] = {
+    (network - person).map(pair => (pair._1, pair._2 - person))
+  }
 
   def friend(network: Map[String, Set[String]], a: String, b: String): Map[String, Set[String]] =
     if (!network.contains(a)) throw new IllegalArgumentException(s"The person $a is not part of the network")
@@ -123,6 +124,7 @@ object TuplesMapsExercises {
     val people = addPerson(addPerson(addPerson(empty, "Bob"), "Mary"), "Jim")
     val simpleNet = friend(friend(people, "Bob", "Mary"), "Jim", "Mary")
     println(simpleNet)
+    println(removePerson(simpleNet, "Jim")) // Map(Bob -> Set(Mary), Mary -> Set(Bob))
     println(nFriends(simpleNet, "Mary")) // 2
     println(nFriends(simpleNet, "Bob")) // 1
     println(nFriends(simpleNet, "Daniel")) // -1
