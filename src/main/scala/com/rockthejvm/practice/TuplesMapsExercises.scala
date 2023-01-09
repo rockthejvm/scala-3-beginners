@@ -15,7 +15,7 @@ object TuplesMapsExercises {
    *
    * - number of friends of a person
    * - who has the most friends
-   * - how many people have NO friends
+   * - how many people have Ngit sO friends
    * + if there is a social connection between two people (direct or not)
    *
    *  Daniel <-> Mary <-> Jane <-> Tom
