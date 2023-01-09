@@ -32,7 +32,7 @@ object PackagesImports { // top-level definition
 
   // import everything EXCEPT something
   object PlayingPhysics {
-    import PhysicsConstants.{PLACK as _, *}
+    import PhysicsConstants.{PLANCK as _, *}
     // val plank = PLANK // will not work
   }
 
@@ -46,7 +46,7 @@ object PackagesImports { // top-level definition
   class PhysicsCalculator {
     import PhysicsConstants.*
     def computePhotonEnergy(wavelength: Double): Double =
-      PLACK / wavelength
+      PLANCK / wavelength
   }
 
   object ScienceApp {
@@ -70,6 +70,6 @@ object PackagesImports { // top-level definition
 object PhysicsConstants {
   // constants
   val SPEED_OF_LIGHT = 299792458
-  val PLACK = 6.62e-34 // scientific notation
+  val PLANCK = 6.62e-34 // scientific notation
   val EARTH_GRAVITY = 9.8
 }

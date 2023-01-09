@@ -25,7 +25,7 @@ object TuplesMapsExercises {
     network + (newPerson -> Set())
 
   def removePerson(network: Map[String, Set[String]], person: String): Map[String, Set[String]] =
-    network - person
+    (network - person).map(pair => (pair._1, pair._2 - person))
 
   def friend(network: Map[String, Set[String]], a: String, b: String): Map[String, Set[String]] =
     if (!network.contains(a)) throw new IllegalArgumentException(s"The person $a is not part of the network")

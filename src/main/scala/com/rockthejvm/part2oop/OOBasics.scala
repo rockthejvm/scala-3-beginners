@@ -50,7 +50,7 @@ object OOBasics {
     counter.print() // 0
 
     counter.increment(10).print() // 10
-    counter.increment(20000).print() //
+    counter.increment(20000).print() // 20000
   }
 }
 
